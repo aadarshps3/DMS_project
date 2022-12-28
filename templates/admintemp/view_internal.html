@@ -1,0 +1,36 @@
+{% extends 'admintemp/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Sl NO</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Seminar Mark</th>
+      <th scope="col">Assignment Mark</th>
+      <th scope="col">TestPaper Mark</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in data %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.student}}</td>
+      <td>{{i.subject}}</td>
+      <td>{{i.seminar_mark}}</td>
+      <td>{{i.assignment_mark}}</td>
+      <td>{{i.testpaper_mark}}</td>
+      <td><a class="btn btn-primary" href="{% url 'update_internal' i.id %}">Update</a></td>
+      <td><a class="btn btn-danger" href="{% url 'del_internal' i.id %}">Delete</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+  </div>
+</div>
+{% endblock %}

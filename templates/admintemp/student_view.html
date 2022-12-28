@@ -1,0 +1,40 @@
+{% extends 'admintemp/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Name</th>
+      <th scope="col">Guardian Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Dob</th>
+      <th scope="col">Department</th>
+      <th scope="col">Mobile No.</th>
+      <th scope="col">Address</th>
+      <th scope="col">Photo</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in data %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.username}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.guardian_name}}</td>
+      <td>{{i.gender}}</td>
+      <td>{{i.date_of_birth}}</td>
+      <td>{{i.department}}</td>
+      <td>{{i.mobile_no}}</td>
+      <td>{{i.address}}</td>
+      <td><img src="{{i.photo.url}}"/></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+  </div>
+</div>
+{% endblock %}
